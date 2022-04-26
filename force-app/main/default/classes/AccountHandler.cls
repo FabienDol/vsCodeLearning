@@ -13,10 +13,9 @@ public with sharing class AccountHandler {
         Account acc = new Account();
         acc.Name = 'Acme Inc ' + counter;
         acc.AccountNumber =  'A000' + counter;
+        addAccounts.add(acc);
         counter++;
         }
-
-        insertAccount(2);
 
         insert addAccounts;
 
