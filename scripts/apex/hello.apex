@@ -10,3 +10,34 @@ System.debug('Hello World!');
 System.debug('My name is ' + tempvar);
 
 AccountHandler.insertAccount(3);
+
+Algo01.getAccounts();
+
+GenerateData.init();
+
+
+Maintenance__c maintenance = new Maintenance__c(
+    startdate__c = date.newInstance(2022, 07, 01),
+    endDate__c = date.newInstance(2023, 01, 01), 
+    Boat__c = [SELECT Id FROM Boat__c LIMIT 1]?.Id, //Id de Boat
+    Description__c = 'Premiere maintenance'
+);
+
+// équivalent pour trouver un Id : 
+/*List<Boat__c> boats = new List<Boat__c>();
+boats = [SELECT Id FROM Boat__c];
+Id boatId = boats.get(0);
+boatId = boats[0];*/
+
+// insérer la maintenance en db
+Maintenance__C newMaintenance = MaintenanceService.newMaintenance(maintenance);
+
+System.debug(newMaintenance);
+
+// requete un Id
+Maintenance__c maintenanceToEnd = [SELECT Id FROM Maintenance__c LIMIT 1];
+// clos une maintenance
+String status = 'Abandonné';
+Boolean isSuccess = MaintenanceService.endMaintenance(maintenanceToEnd, status);
+System.debug('maintenanceToEnd : ' + maintenanceToEnd);
+System.debug('isSuccess : ' + isSuccess);
