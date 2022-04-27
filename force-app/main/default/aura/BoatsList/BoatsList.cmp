@@ -1,0 +1,17 @@
+<aura:component controller="FriendShipsController" implements="flexipage:availableForAllPageTypes" access="global" >
+
+    <!-- afficher liste des boats -->
+    <aura:attribute name="boats" type="Boat__c[]" description="Liste des boats"/>
+
+    <!-- handler on init -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+    <aura:iteration items="{!v.boats}" var="boat">
+
+        <div class="slds-card">
+            {!boat.Name} &nbsp; {!boat.Id}
+        </div>
+
+    </aura:iteration>
+
+</aura:component>	
