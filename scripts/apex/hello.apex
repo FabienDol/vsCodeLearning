@@ -41,3 +41,22 @@ String status = 'Abandonné';
 Boolean isSuccess = MaintenanceService.endMaintenance(maintenanceToEnd, status);
 System.debug('maintenanceToEnd : ' + maintenanceToEnd);
 System.debug('isSuccess : ' + isSuccess);
+
+
+System.debug(SoqlTest.getBoatsByType('Jet Ski'));
+
+
+List<Boat__c> jetSkiList = BoatsSelector.selectByType('Jet Ski');
+System.debug(JSON.serializePretty(jetSkiList));
+
+Set<Id> idSet = new Set<Id>{'a057Q000000n5z4QAA', 'a057Q000000n5ywQAA'};
+List<Boat__c> returnedList = BoatsSelector.selectById(idSet);
+System.debug(JSON.serializePretty(returnedList));
+
+Set<String> stringSet = new Set<String>{'Chala', 'Anatolian'};
+List<Boat__c> returnedList = BoatsSelector.selectByName(stringSet);
+System.debug(JSON.serializePretty(returnedList));
+
+Set<Id> idSet = new Set<Id>{'a057Q000000n5z4QAA', 'a057Q000000n5ywQAA'};
+List<Boat__c> returnedList = BoatsSelector.selectByIdWithMaintenances(idSet);
+System.debug(JSON.serializePretty(returnedList));
