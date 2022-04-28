@@ -7,11 +7,15 @@
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
 
     <aura:iteration items="{!v.boats}" var="boat">
-
         <div class="slds-card">
-            {!boat.Name} &nbsp; {!boat.Id}
-        </div>
+            {!boat.Name}
 
+            <!--<aura:attribute name="boats" type="Maintenances__r[]" description="Liste des maintenances"/>-->
+            <aura:iteration items="{!boat.Maintenances__r}" var="maintenances">
+                &nbsp; {!maintenances.startDate__c}
+            </aura:iteration>
+
+        </div>
     </aura:iteration>
 
 </aura:component>	
